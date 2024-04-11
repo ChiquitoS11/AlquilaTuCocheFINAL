@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 public class CocheFINAL {
     
     // Atributos
+    boolean disponibilidad; 
             String marca;
             String modelo;
             int numeroPlazas;
@@ -30,7 +31,7 @@ public class CocheFINAL {
     private ArrayList<Imagen> fotoIMAGEN_ARRAY;
     
     // Constructor
-    public CocheFINAL(String marca, String modelo, int numeroPlazas, Tipo tipo, double alquilerDia, ArrayList<URL> rutaFotoURL) {
+    public CocheFINAL(String marca, String modelo, int numeroPlazas, Tipo tipo, double alquilerDia, ArrayList<URL> rutaFotoURL, boolean disponibilidad) {
         this.marca = marca;
         this.modelo = modelo;
         this.numeroPlazas = numeroPlazas;
@@ -48,6 +49,7 @@ public class CocheFINAL {
             fotoIMAGEN_ARRAY.add(efim2);
         }
         
+        this.disponibilidad = disponibilidad;
     }
     
     public CocheFINAL(String marca, String modelo, int numeroPlazas, Tipo tipo, double alquilerDia, Imagen fotoIMAGEN) {
@@ -134,6 +136,15 @@ public class CocheFINAL {
     public ArrayList<Imagen> getFotoIMAGEN_ARRAY() {
         return fotoIMAGEN_ARRAY;
     }
+
+    public boolean isDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(boolean disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+    
     
     
     

@@ -48,11 +48,10 @@ public class GUIFINAL extends javax.swing.JFrame {
             @Override
             public void run() {
                 // Método que se ejecutará en paralelo
-                while (true) { // Ejecutar indefinidamente
+                while (true) { 
                     try {
-                        // Llamar al método deseado
                         cambiarImagen();
-                        // Dormir durante 5 segundos
+                        // El tiempo de carga entre imagenes
                         Thread.sleep(1500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -67,7 +66,7 @@ public class GUIFINAL extends javax.swing.JFrame {
     int contador = 0;
     public void cambiarImagen() {
         if (opcionAtributo == 0) {
-            int numero = (int) (Math.random() * fotosIMG.size()) + 1;
+            int numero = (int) (Math.random() * (fotosIMG.size()-1)) + 1;
             
             
             if (contador != fotosIMG.size()) {
@@ -101,7 +100,7 @@ public class GUIFINAL extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        resultadosCB = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -109,6 +108,9 @@ public class GUIFINAL extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -143,19 +145,20 @@ public class GUIFINAL extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnMinimizarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCerrarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(17, 17, 17))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCerrarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMinimizarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCerrarLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMinimizarLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         btnAdminLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,15 +190,14 @@ public class GUIFINAL extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setToolTipText("");
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        resultadosCB.setToolTipText("");
+        resultadosCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                resultadosCBActionPerformed(evt);
             }
         });
 
         jScrollPane3.setBorder(null);
-        jScrollPane3.setOpaque(true);
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -261,6 +263,9 @@ public class GUIFINAL extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(adminOrUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(adminOrUserPanelLayout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(adminOrUserPanelLayout.createSequentialGroup()
                         .addGap(167, 167, 167)
                         .addGroup(adminOrUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -268,11 +273,8 @@ public class GUIFINAL extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(adminOrUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(adminOrUserPanelLayout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(402, Short.MAX_VALUE))
+                            .addComponent(resultadosCB, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(457, Short.MAX_VALUE))
         );
         adminOrUserPanelLayout.setVerticalGroup(
             adminOrUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,40 +288,68 @@ public class GUIFINAL extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(adminOrUserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(resultadosCB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
+                        .addGap(2, 2, 2)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jPanel2.getAccessibleContext().setAccessibleDescription("");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("(Solo se puede alquilar un coche");
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("de la ''Busqueda' MODELO)");
+
+        jButton4.setText("ALQUILAR");
+        jButton4.setEnabled(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAdminLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(adminOrUserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(539, 539, 539)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAdminLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(adminOrUserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAdminLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(adminOrUserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton4)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -328,7 +358,8 @@ public class GUIFINAL extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarLabelMouseClicked
-        this.dispose();
+        dispose();
+        System.exit(0);
     }//GEN-LAST:event_btnCerrarLabelMouseClicked
 
     private void btnMinimizarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarLabelMouseClicked
@@ -383,7 +414,7 @@ public class GUIFINAL extends javax.swing.JFrame {
             case 0:
                 System.out.println("Mostrar Todo");
                 jLabel2.setVisible(false);
-                jComboBox2.setVisible(false);
+                resultadosCB.setVisible(false);
 
                 adminOrUserPanel.revalidate();
                 adminOrUserPanel.repaint();
@@ -392,13 +423,16 @@ public class GUIFINAL extends javax.swing.JFrame {
             case 1:
                 System.out.println("Marca");
                 jLabel2.setVisible(true);
-                jComboBox2.setVisible(true);
-                jComboBox2.removeAllItems();
+                resultadosCB.setVisible(true);
+                resultadosCB.removeAllItems();
 
                 for (CocheFINAL c : cochesGUI) {
-                    jComboBox2.addItem(c.marca);
+                    if (c.disponibilidad == true) {
+                        resultadosCB.addItem(c.marca);
+                    }
+                    
                 }
-                eliminarElementosDuplicados(jComboBox2);
+                eliminarElementosDuplicados(resultadosCB);
 
                 adminOrUserPanel.revalidate();
                 adminOrUserPanel.repaint();
@@ -407,13 +441,15 @@ public class GUIFINAL extends javax.swing.JFrame {
             case 2:
                 System.out.println("Modelo");
                 jLabel2.setVisible(true);
-                jComboBox2.setVisible(true);
-                jComboBox2.removeAllItems();
+                resultadosCB.setVisible(true);
+                resultadosCB.removeAllItems();
 
                 for (CocheFINAL c : cochesGUI) {
-                    jComboBox2.addItem(c.modelo);
+                    if (c.disponibilidad == true) {
+                        resultadosCB.addItem(c.modelo);
+                    }
                 }
-                eliminarElementosDuplicados(jComboBox2);
+                eliminarElementosDuplicados(resultadosCB);
 
                 adminOrUserPanel.revalidate();
                 adminOrUserPanel.repaint();
@@ -422,13 +458,15 @@ public class GUIFINAL extends javax.swing.JFrame {
             case 3:
                 System.out.println("Numero de plazas");
                 jLabel2.setVisible(true);
-                jComboBox2.setVisible(true);
-                jComboBox2.removeAllItems();
+                resultadosCB.setVisible(true);
+                resultadosCB.removeAllItems();
 
                 for (CocheFINAL c : cochesGUI) {
-                    jComboBox2.addItem(String.valueOf(c.numeroPlazas));
+                    if (c.disponibilidad == true) {
+                    resultadosCB.addItem(String.valueOf(c.numeroPlazas));
+                    }
                 }
-                eliminarElementosDuplicados(jComboBox2);
+                eliminarElementosDuplicados(resultadosCB);
 
                 adminOrUserPanel.revalidate();
                 adminOrUserPanel.repaint();
@@ -437,13 +475,15 @@ public class GUIFINAL extends javax.swing.JFrame {
             case 4:
                 System.out.println("Tipo");
                 jLabel2.setVisible(true);
-                jComboBox2.setVisible(true);
-                jComboBox2.removeAllItems();
+                resultadosCB.setVisible(true);
+                resultadosCB.removeAllItems();
 
                 for (CocheFINAL c : cochesGUI) {
-                    jComboBox2.addItem(c.tipo.toString());
+                    if (c.disponibilidad == true) {
+                        resultadosCB.addItem(c.tipo.toString());
+                    }
                 }
-                eliminarElementosDuplicados(jComboBox2);
+                eliminarElementosDuplicados(resultadosCB);
 
                 adminOrUserPanel.revalidate();
                 adminOrUserPanel.repaint();
@@ -452,14 +492,16 @@ public class GUIFINAL extends javax.swing.JFrame {
             case 5:
                 System.out.println("Precio Alquiler Diario");
                 jLabel2.setVisible(true);
-                jComboBox2.setVisible(true);
-                jComboBox2.removeAllItems();
+                resultadosCB.setVisible(true);
+                resultadosCB.removeAllItems();
 
                 for (CocheFINAL c : cochesGUI) {
-                    jComboBox2.addItem(String.valueOf(c.alquilerDia));
+                    if (c.disponibilidad == true) {
+                        resultadosCB.addItem(String.valueOf(c.alquilerDia));
+                    }
                 }
                 
-                eliminarElementosDuplicados(jComboBox2);
+                eliminarElementosDuplicados(resultadosCB);
 
                 adminOrUserPanel.revalidate();
                 adminOrUserPanel.repaint();
@@ -469,9 +511,10 @@ public class GUIFINAL extends javax.swing.JFrame {
    
     
     static String txt = "";
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-
-        String opcion = (String) jComboBox2.getSelectedItem();
+    private void resultadosCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultadosCBActionPerformed
+        jButton4.setEnabled(false);
+        
+        String opcion = (String) resultadosCB.getSelectedItem();
         int opcionNumero = 0;
         double opcionNumer = 0;
 
@@ -502,38 +545,37 @@ public class GUIFINAL extends javax.swing.JFrame {
 //        }
         
         for (CocheFINAL c : cochesGUI) {
-
-            if (opcionAtributo == 1 && c.getMarca().equals(opcion)) {
+            
+            if (opcionAtributo == 1 && c.getMarca().equals(opcion) && c.disponibilidad == true) {
                 
                 cocheIMGLABEL.setIcon((c.getFotoIMAGEN_ARRAY().get(0)).imgToCOMPONENT(cocheIMGLABEL));
                 txt += c.toString() + "\n";
             }
-            if (opcionAtributo == 2 && (c.getModelo().equals(opcion))) {
+            if (opcionAtributo == 2 && (c.getModelo().equals(opcion)) && c.disponibilidad == true) {
+                jButton4.setEnabled(true);
+                cocheIMGLABEL.setIcon((c.getFotoIMAGEN_ARRAY().get(0)).imgToCOMPONENT(cocheIMGLABEL));
+                txt += c.toString() + "\n";
+            }
+            if (opcionAtributo == 3 && (c.getNumeroPlazas() == opcionNumero) && c.disponibilidad == true) {
                 
                 cocheIMGLABEL.setIcon((c.getFotoIMAGEN_ARRAY().get(0)).imgToCOMPONENT(cocheIMGLABEL));
                 txt += c.toString() + "\n";
             }
-            if (opcionAtributo == 3 && (c.getNumeroPlazas() == opcionNumero)) {
+            if (opcionAtributo == 4 && (c.getTipo().toString().equals(opcion)) && c.disponibilidad == true) {
                 
                 cocheIMGLABEL.setIcon((c.getFotoIMAGEN_ARRAY().get(0)).imgToCOMPONENT(cocheIMGLABEL));
                 txt += c.toString() + "\n";
             }
-            if (opcionAtributo == 4 && (c.getTipo().toString().equals(opcion))) {
-                
-                cocheIMGLABEL.setIcon((c.getFotoIMAGEN_ARRAY().get(0)).imgToCOMPONENT(cocheIMGLABEL));
-                txt += c.toString() + "\n";
-            }
-            if (opcionAtributo == 5 && (c.getAlquilerDia() == opcionNumer)) {
+            if (opcionAtributo == 5 && (c.getAlquilerDia() == opcionNumer) && c.disponibilidad == true) {
                         
                 cocheIMGLABEL.setIcon((c.getFotoIMAGEN_ARRAY().get(0)).imgToCOMPONENT(cocheIMGLABEL));
                 txt += c.toString() + "\n";
-            }
-
+            } 
         }
 
         jLabel3.setText(txt + "</html>"); // poder crear un salto de linea con el formato HTML
         txt = ""; // formatea la variable txt, para que no se acumulen los coches
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_resultadosCBActionPerformed
     
     /**
      * Este metodo tiene su miga y se encarga de reorganizar la barra de desplazamiento {@code (scroll)} <P>
@@ -559,8 +601,16 @@ public class GUIFINAL extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Alquilar alq = new Alquilar(this);
+        alq.setVisible(true);
+        alq.setLocationRelativeTo(null);
+        alq.setResizable(false);
+        alq.setSize(320, 250);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     
     public void cargarArrayList() {
@@ -625,8 +675,10 @@ public class GUIFINAL extends javax.swing.JFrame {
         jLabel2.setFont(cargarFuente(16));
         jLabel3.setFont(cargarFuente(14));
         jComboBox1.setFont(cargarFuente(16));
-        jComboBox2.setFont(cargarFuente(16));
-        
+        resultadosCB.setFont(cargarFuente(16));
+        jLabel5.setFont(cargarFuente(16));
+        jLabel6.setFont(cargarFuente(16));
+        jButton4.setFont(cargarFuente(16));
 
         // boton de Busqueda
         jComboBox1.addItem("Mostar Todo");
@@ -709,14 +761,17 @@ public class GUIFINAL extends javax.swing.JFrame {
     private javax.swing.JLabel cocheIMGLABEL;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
+    public javax.swing.JComboBox<String> resultadosCB;
     // End of variables declaration//GEN-END:variables
 }
